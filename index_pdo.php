@@ -1,11 +1,8 @@
 <?php
 $bdd = new PDO('mysql:host=localhost;dbname=mon_armoire;charset=utf8','root','root');
-$reponse = $bdd->query('SELECT * FROM mes_chaussettes;');
-// var_dump($reponse);
-// var_dump($donnees);
-// while($donnees = $reponse->fetch()):
-// 	echo $donnees['id']."-".$donnees["couleur"]."\n".$donnees["pointure"]."\n".$donnees["temp_lavage"]."\n".$donnees["description"]."\n".$donnees["date_lavage"];
-// endwhile;
+// $reponse = $bdd->query('SELECT * FROM mes_chaussettes;');
+$req= $bdd->prepare('SELECT * FROM mes_chaussettes WHERE couleur=:couleur');
+$req->execute(array('couleur' => $_GET["couleur"]));
 
 ?>
 <!DOCTYPE html>
@@ -24,7 +21,7 @@ $reponse = $bdd->query('SELECT * FROM mes_chaussettes;');
 		<th>temp_lavage</th>
 		<th>date_lavage</th>
 	</tr>
-<?php while($donnees = $reponse->fetch()):?>
+<?php while($donnees = $req->fetch()):?>
 	<tr>
 		<td><?=$donnees['id'];?></td>
 		<td><?=$donnees['pointure'];?></td>
@@ -33,7 +30,7 @@ $reponse = $bdd->query('SELECT * FROM mes_chaussettes;');
 		<td><?=$donnees['date_lavage'];?></td>
 	</tr>
 <?php endwhile?>
-<?php $reponse->closeCursor();?>
+<?php $req->closeCursor();?>
 </table>
 </body>
 </html>
