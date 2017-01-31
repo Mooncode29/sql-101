@@ -1,5 +1,7 @@
+CREATE DATABASE mon_armoire;
 USE mon_armoire;
-DROP TABLE mes_chaussettes;
+
+
 
 CREATE TABLE `mes_chaussettes` (
   `id` mediumint(8) unsigned NOT NULL auto_increment,
