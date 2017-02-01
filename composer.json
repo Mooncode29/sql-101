@@ -1,0 +1,12 @@
+{
+    "name": "root/sql-101",
+    "authors": [
+        {
+            "name": "Mooncode29",
+            "email": "irene.ravelonarivo@gmail.com"
+        }
+    ],
+    "require": {
+        "j4mie/idiorm": "^1.5"
+    }
+}
